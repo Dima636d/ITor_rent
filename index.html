@@ -3,30 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITorrent</title>
-    <style>
-        .Download {
-            padding: 10px 20px;
-            background-color: forestgreen;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .Download:hover {
-            background-color: white;
-        }
-    </style>
+    <title>login</title>
+    <script src="js/register.js" defer></script>
 </head>
 <body>
-    <h1>Добро пожаловать на ИТоррент</h1>
-    
-    <a href="CHI.torrent" class="Download">скачать Cheat Engine .torrent</a>
-    <a href="AM.torrent" class="Download">скачать Art Money .torrent</a>
-    <a href="SISS.html" class="Download">скачать Survive in Suomi Simulator</a>
-    
+    <h1>Зарегистрируйтесь</h1>
+    <input type="text" id="regInput" placeholder="password">
+    <input type="text" id="nameInput" placeholder="Name">
+    <button onclick="SavePass()">save password</button>
+    <button onclick="SaveName()">save name</button>
+
+    <h1>Ввойдите</h1>
+    <input type="text" id="logInput" placeholder="password">
+    <button onclick="logpas()">login password</button>
+
+    <h6>если вы уже зарегистрированы то просто ввойдите</h6>
 </body>
 </html>
