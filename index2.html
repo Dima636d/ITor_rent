@@ -32,18 +32,45 @@
             align-items: center; 
             font-size: 16px; 
             cursor: pointer; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
         }
         
         .round-button:hover {
             background-color: #2980b9; 
+            transition: 0.3s;
         }
-        
+
+        .div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+        .tokenbutt {
+            border: 1px solid black;
+            background-color: blue;
+            color: rgb(255, 255, 255);
+            padding: 5px 10px;
+            font-size: 20px;
+            text-decoration: none;
+            font-family: arial, sans-serif;
+            transition: 0.3s;
+        }
+        .tokenbutt:hover {
+            background-color: brown;
+            color: rgb(106, 166, 212);
+            transition: 0.3s;
+        }
     </style>
 </head>
 <body>
+    <div class="div">
     <a href="profile.html" class="round-button"></a>
+    <a href="tokens.html" class="tokenbutt">tokens</a>
+</div>
+
     <h1>Добро пожаловать на ИТоррент</h1>
-    
     <a href="CHI.torrent" class="Download">скачать Cheat Engine .torrent</a>
     <a href="AM.torrent" class="Download">скачать Art Money .torrent</a>
     <a href="SISS.html" class="Download">скачать Survive in Suomi Simulator</a>
