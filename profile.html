@@ -12,11 +12,36 @@
             border-radius: 50%; 
             background-color: rgb(102, 104, 104); 
         }
+        .prom {
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        .prombutton {
+            padding: 5px 5px;
+            font-size: 10px;
+        }
+        .button {
+            border: 2px solid #000000;
+            border-radius: 7px;
+            padding: 10px 10px;
+            font-size: 17px;
+        }
     </style>
 </head>
 <body>
     <div class="box"></div>
-    <p id="name"></p>
-    <p id="pass"></p>
+    <p id="name"> name</p>
+    <p id="pass"> password</p>
+    <p id="moneyy"></p>
+    <p></p>
+    <div class="prom">
+        <input type="text" id="promInput" placeholder="промокод" class="promInputi">
+        <button onclick="addmoney()" class="prombutton">promocod</button>
+        <P>Введите промокод</P>
+    </div>
+
+    <a href="index2.html" class="button">назад</a>
 </body>
 </html>
