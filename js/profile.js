@@ -1,7 +1,7 @@
 let username = "";
 let password = "";
 let money = 100; 
-let proms = { proms1: "QWERTY123456", proms2: "ZXCASD" };
+let proms = { proms1: "QWERTY123456", proms2: "ZXCASD", proms3: "QRII1488" };
 
 function start() {
     username = localStorage.getItem("username");
@@ -31,6 +31,13 @@ function addmoney() {
         localStorage.setItem("money", money);  
         money = parseInt(localStorage.getItem("money"));
         document.getElementById('moneyy').innerHTML = money; 
+        console.log("money save", money);
+    }
+    if (enteredprom === proms.proms3) {
+        money = parseInt(money) + 1488;
+        localStorage.setItem("money", money)
+        money = parseInt(localStorage.getItem("money"));
+        document.getElementById('moneyy').innerHTML = money;
         console.log("money save", money);
     }
 }
