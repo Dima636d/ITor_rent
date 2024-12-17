@@ -8,9 +8,11 @@ function start() {
     password = localStorage.getItem("password");
     money = parseInt(localStorage.getItem("money")) || 100;
     localStorage.setItem("money", money);
+    let tokens = parseInt(localStorage.getItem("token"))
     document.getElementById('name').innerHTML = username ? username : "Гость"; 
     document.getElementById('pass').innerHTML = password + " пароль";
     document.getElementById('moneyy').innerHTML = money ? money : "no money";
+    document.getElementById('tokens').innerHTML = tokens ? tokens : "no tokens";
     console.log("money print", money);
 }
 start();

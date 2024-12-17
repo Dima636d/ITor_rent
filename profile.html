@@ -28,15 +28,45 @@
             padding: 10px 10px;
             font-size: 17px;
         }
+        .header {
+            display: inline-block;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 5px 0;
+            font-size: 20px;
+            text-align: left;
+            border-radius: 10px;
+        }
+        .header a {
+            display: inline-block;
+            color: aqua;
+            text-decoration: none;
+            background-color: blue;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .header span {
+            display: inline;
+        }
         
     </style>
 </head>
 <body>
+    <div class="header">
+        <span>ITorrent</span>
+        <a href="tokens.html">token</a>
+        <a href="coments.html">comments</a>
+    </div>
+
     <div class="box"></div>
     <p id="name"> name</p>
     <p id="pass"> password</p>
     <p id="moneyy"></p>
+    <p id="tokens"></p>
+
     <p></p>
+
     <div class="prom">
         <input type="text" id="promInput" placeholder="промокод" class="promInputi">
         <button onclick="addmoney()" class="prombutton">promocod</button>
