@@ -46,9 +46,16 @@
             border: 1px solid black;
             border-radius: 5px;
         }
+        .header a:hover {
+            color: azure;
+            background-color: aqua;
+            transition: 0.5;
+        }
         .header span {
             display: inline;
         }
+
+        
         
     </style>
 </head>
@@ -57,7 +64,13 @@
         <span>ITorrent</span>
         <a href="tokens.html">token</a>
         <a href="coments.html">comments</a>
+        <a href="loadfile.html">load files</a>
     </div>
+
+    <p>Выберите цвет фона</p>
+    <input type="color" id="colorPicker" value="#ffffff">
+
+    <p></p>
 
     <div class="box"></div>
     <p id="name"> name</p>

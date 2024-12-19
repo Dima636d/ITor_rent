@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>load file</title>
+    <script src=""></script>
+    <style>
+        .upload-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+          }
+      
+          .upload-form input[type="file"] {
+            margin: 10px 0;
+          }
+      
+          .upload-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+          }
+      
+          .upload-form button:hover {
+            background-color: #45a049;
+          }
+    </style>
+</head>
+<body>
+    <div class="upload-form">
+        <h1>Загрузить файл</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" required>
+          <br>
+          <button type="submit">Загрузить</button>
+        </form>
+      </div>
+</body>
+</html>
