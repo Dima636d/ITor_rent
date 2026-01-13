@@ -72,6 +72,10 @@
             background-color: #41444b;
             outline: 1px solid #66c0f4;
         }
+        input[type="email"]:focus {
+            background-color: #41444b;
+            outline: 1px solid #66c0f4;
+    }
 
         textarea {
             height: 100px;
@@ -119,6 +123,7 @@
     </style>
 </head>
 <body>
+    
 
 <form class="steam-form" action="https://formspree.io/f/mreegrok" method="POST">
     <h1>Поддержка</h1>
@@ -127,6 +132,11 @@
     <label>Ваш никнейм:</label>
     <input type="text" name="name" placeholder="Напр: Player_1" required>
 
+    <label>Ваша почта:</label>
+<!-- Атрибут name="email" ОБЯЗАТЕЛЕН, чтобы Formspree его узнал -->
+    <input type="email" name="email" placeholder="example@mail.com" required>
+
+
     <label>Суть обращения:</label>
     <textarea name="message" placeholder="Опишите баг или расскажите о вашей игре..." required></textarea>
 
@@ -134,10 +144,15 @@
     <div class="info-box">
         <p><b>ХОТИТЕ ДОБАВИТЬ ИГРУ?</b></p>
         <p>Загрузите её на <b>Google Диск</b> или <b>Mega</b>, откройте доступ по ссылке и вставьте эту ссылку в поле ниже.</p>
+    
+    <!-- Добавленный текст про ответ -->
+    <p style="margin-top: 10px; color: #66c0f4; font-size: 12px;">
+        Вам ответят на <b>электронную почту</b> через некоторое время.
+    </p>
     </div>
 
     <label>Ссылка на Google Диск / Скриншот:</label>
-    <input type="text" name="link" placeholder="drive.google.com..." required>
+    <input type="text" name="link" placeholder="drive.google.com..." >
 
     <button type="submit">Отправить в Createdet</button>
 </form>
