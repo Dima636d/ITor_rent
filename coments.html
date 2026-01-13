@@ -1,39 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Комментарии</title>
+    <title>Createdet | Отзывы</title>
     <style>
-        .button {
-            display: inline-block;
-            color: aqua;
-            text-decoration: none;
-            background-color: blue;
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 24px;
+        /* ОСНОВНОЙ ТЕМНЫЙ СТИЛЬ */
+        body {
+            background-color: #1b2838;
+            color: #c7d5e0;
+            font-family: 'Motiva Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
-        .button:hover {
-            color: azure;
-            background-color: aqua;
-            transition: 0.5;
+
+        /* ШАПКА */
+        header {
+            width: 100%;
+            background-color: #171d25;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* КНОПКА НАЗАД */
+        .button-back {
+            text-decoration: none;
+            color: #66c0f4;
+            background: rgba(102, 192, 244, 0.1);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+        }
+
+        .button-back:hover {
+            background: #66c0f4;
+            color: #fff;
+        }
+
+        /* КОНТЕЙНЕР ДЛЯ КОММЕНТАРИЕВ */
+        .comments-container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(23, 26, 33, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #66c0f4;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Ваши отзывы об сайте</h1>
-    <a href="profile.html" class="button">назад</a>
 
-    <div id="utterances-comments"></div>
+    <header>
+        <div class="header-content">
+            <span class="logo-text">Createdet</span>
+            <a href="profile.html" class="button-back">← В ПРОФИЛЬ</a>
+        </div>
+    </header>
 
-    <script src="https://utteranc.es/client.js"
-            repo="Dima636d/ITor_rent"  
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
+    <div class="comments-container">
+        <h1>Отзывы сообщества</h1>
+        <div class="subtitle">Поделитесь своим мнением о платформе</div>
+
+        <!-- Виджет комментариев -->
+        <div id="utterances-comments"></div>
+        <script src="https://utteranc.es/client.js"
+                repo="Dima636d/ITor_rent"  
+                issue-term="pathname"
+                theme="github-dark" 
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
+
 </body>
 </html>

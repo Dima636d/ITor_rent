@@ -1,91 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title>
+    <title>Createdet | Профиль</title>
     <script src="js/profile.js" defer></script>
     <style>
-        .box {
-            width: 50px; 
-            height: 50px; 
-            border-radius: 50%; 
-            background-color: rgb(102, 104, 104); 
-        }
-        .prom {
-            display: flex; 
-            justify-content: flex-start; 
-            align-items: center; 
-            gap: 10px; 
-        }
-        .prombutton {
-            padding: 5px 5px;
-            font-size: 10px;
-        }
-        .button {
-            border: 2px solid #000000;
-            border-radius: 7px;
-            padding: 10px 10px;
-            font-size: 17px;
-        }
-        .header {
-            display: inline-block;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            padding: 5px 0;
-            font-size: 20px;
-            text-align: left;
-            border-radius: 10px;
-        }
-        .header a {
-            display: inline-block;
-            color: aqua;
-            text-decoration: none;
-            background-color: blue;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-        .header a:hover {
-            color: azure;
-            background-color: aqua;
-            transition: 0.5;
-        }
-        .header span {
-            display: inline;
+        /* ОСНОВНОЙ СТИЛЬ */
+        body {
+            background-color: #1b2838;
+            color: #c7d5e0;
+            font-family: 'Motiva Sans', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        
-        
+        /* ШАПКА ПРОФИЛЯ */
+        .header {
+            width: 100%;
+            background-color: #171d25;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            color: #fff;
+            margin-right: auto;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header a {
+            color: #66c0f4;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            background: rgba(102, 192, 244, 0.1);
+            transition: 0.3s;
+        }
+
+        .header a:hover {
+            background: #66c0f4;
+            color: #fff;
+        }
+
+        /* КАРТОЧКА ПРОФИЛЯ */
+        .profile-card {
+            background: #1e2e3e;
+            background: linear-gradient(135deg, #2a475e 0%, #1b2838 100%);
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* АВАТАР */
+        .box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(#67c1f5, #417a9b);
+            margin-bottom: 20px;
+            border: 4px solid #1b2838;
+            box-shadow: 0 0 20px rgba(103, 193, 245, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box::after { content: "👤"; font-size: 50px; }
+
+        .info-group {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .info-group p {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+
+        #name { color: #fff; font-size: 24px; font-weight: bold; }
+        #pass { color: #556772; font-size: 14px; }
+        #moneyy { color: #a4d007; font-weight: bold; margin-top: 10px; }
+
+        /* ПРОМОКОД */
+        .prom {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .prom p { margin: 0; font-size: 12px; color: #66c0f4; text-transform: uppercase; }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            background: #32353c;
+            border: 1px solid #111;
+            border-radius: 3px;
+            color: #fff;
+        }
+
+        .prombutton {
+            padding: 10px 20px;
+            background: #3d4450;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .prombutton:hover { background: #66c0f4; }
+
+        /* КНОПКА НАЗАД */
+        .button-back {
+            text-decoration: none;
+            color: #fff;
+            background: #3d4450;
+            padding: 10px 30px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .button-back:hover { background: #555; }
+
     </style>
 </head>
 <body>
+
     <div class="header">
-        <span>ITorrent</span>
-        <a href="tokens.html">token</a>
-        <a href="coments.html">comments</a>
-        <a href="loadfile.html">load files</a>
+        <div class="header-content">
+            <span class="logo-text">Createdet</span>
+            <a href="coments.html">Комментарии</a>
+            <a href="loadfile.html">Загрузить файл</a>
+        </div>
     </div>
 
-    <p>Выберите цвет фона</p>
-    <input type="color" id="colorPicker" value="#ffffff">
+    <div class="profile-card">
+        <div class="box"></div>
+        
+        <div class="info-group">
+            <p id="name">Загрузка имени...</p>
+            <p id="pass">********</p>
+            <p id="moneyy">Баланс: 0.00$</p>
+        </div>
 
-    <p></p>
+        <div class="prom">
+            <p>Активация промокода</p>
+            <div class="input-row">
+                <input type="text" id="promInput" placeholder="Введите код...">
+                <button onclick="addmoney()" class="prombutton">ОК</button>
+            </div>
+        </div>
 
-    <div class="box"></div>
-    <p id="name"> name</p>
-    <p id="pass"> password</p>
-    <p id="moneyy"></p>
-    <p id="tokens"></p>
-
-    <p></p>
-
-    <div class="prom">
-        <input type="text" id="promInput" placeholder="промокод" class="promInputi">
-        <button onclick="addmoney()" class="prombutton">promocod</button>
-        <P>Введите промокод</P>
+        <a href="index2.html" class="button-back">← Вернуться в библиотеку</a>
     </div>
 
-    <a href="index2.html" class="button">назад</a>
 </body>
 </html>

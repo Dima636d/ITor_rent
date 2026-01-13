@@ -1,83 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITorrent</title>
+    <title>Createdet | Главная</title>
     <style>
-        .Download {
-            padding: 10px 20px;
-            background-color: forestgreen;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
+        /* --- ПРЕЛОАДЕР (ЗАГРУЗКА) --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #171a21;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s;
         }
-        .Download:hover {
-            background-color: rgb(21, 128, 190);
+        .loader {
+            width: 60px; height: 60px;
+            border: 6px solid rgba(102, 192, 244, 0.1);
+            border-top: 6px solid #66c0f4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- ОСНОВНЫЕ СТИЛИ --- */
+        body {
+            background-color: #1b2838;
+            color: #c7d5e0;
+            font-family: 'Motiva Sans', Arial, sans-serif;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column;
+            align-items: center; min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* ШАПКА */
+        header {
+            width: 100%;
+            background: #171d25;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex; justify-content: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-container {
+            width: 90%; max-width: 1100px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            font-size: 26px; font-weight: 800;
+            color: #fff; letter-spacing: 2px;
+            background: linear-gradient(to right, #66c0f4, #1a44c2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        /* ПРОФИЛЬ */
         .round-button {
-            width: 40px; 
-            height: 40px; 
-            border-radius: 50%; 
-            background-color: rgb(102, 104, 104); 
-            color: white; 
-            border: none; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            font-size: 16px; 
-            cursor: pointer; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
+            width: 42px; height: 42px;
+            border-radius: 8px;
+            background: #3d4450;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; transition: 0.3s;
         }
-        
-        .round-button:hover {
-            background-color: #2980b9; 
-            transition: 0.3s;
-        }
+        .round-button:hover { background: #66c0f4; transform: scale(1.1); }
+        .round-button::after { content: "👤"; font-size: 20px; }
 
-        .div {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 10px;
+        /* КОНТЕНТ */
+        .main-content {
+            width: 90%; max-width: 1100px;
+            padding: 50px 0;
+            opacity: 0; transform: translateY(20px);
+            transition: 1s all ease;
         }
-        .tokenbutt {
-            display: inline-block;
-            border-radius: 5px;
-            border: 1px solid black;
-            background-color: blue;
-            color: rgb(255, 255, 255);
-            padding: 5px 10px;
-            font-size: 20px;
-            text-decoration: none;
-            font-family: arial, sans-serif;
-            transition: 0.3s;
+        .main-content.loaded { opacity: 1; transform: translateY(0); }
+
+        h1 { font-size: 36px; color: #fff; margin: 0; }
+        .subtitle { color: #66c0f4; margin-bottom: 40px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* СЕТКА КАРТОЧЕК */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
-        .tokenbutt:hover {
-            background-color: brown;
-            color: rgb(106, 166, 212);
-            transition: 0.3s;
+        .item-card {
+            background: linear-gradient(135deg, #2a475e 0%, #1b2838 100%);
+            border-radius: 4px; padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+        .item-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+            border-color: rgba(102, 192, 244, 0.4);
+        }
+        .item-name { font-size: 22px; color: #fff; margin-bottom: 25px; font-weight: bold; }
+
+        /* КНОПКИ СКАЧИВАНИЯ */
+        .btn-download {
+            display: block; width: 100%; padding: 14px 0;
+            background: linear-gradient(to bottom, #a4d007 0%, #536904 100%);
+            color: #fff; text-align: center; text-decoration: none;
+            font-weight: bold; border-radius: 2px;
+            text-transform: uppercase; transition: 0.2s;
+            font-size: 13px;
+        }
+        .btn-download:hover { filter: brightness(1.2); box-shadow: 0 0 15px rgba(164, 208, 7, 0.3); }
+        
+        .btn-soon { background: #3d4450; cursor: not-allowed; color: #888; }
+        .btn-soon:hover { filter: none; box-shadow: none; }
+
+        footer { margin-top: auto; padding: 40px; color: #4f535b; font-size: 13px; }
     </style>
 </head>
 <body>
-    <div class="div">
-    <a href="profile.html" class="round-button"></a>
-    <a href="tokens.html" class="tokenbutt">tokens</a>
-</div>
 
-    <h1>Добро пожаловать на ИТоррент</h1>
-    <a href="CHI.torrent" class="Download">скачать Cheat Engine .torrent</a>
-    <a href="AM.torrent" class="Download">скачать Art Money .torrent</a>
-    <a href="LINUX LISDU.exe" class="Download">Скачать LINUX LISDU</a>
-    <a href="survive install.exe" class="Download">Скачать Survive 1.6</a>
-    <a href="HNC Pre-Alpha.exe" class="Download">Скачать Hello neighbor clone pre-alpha</a>
-    
+    <!-- ЭКРАН ЗАГРУЗКИ -->
+    <div id="preloader">
+        <div class="loader"></div>
+        <div style="color: #66c0f4; margin-top: 15px; letter-spacing: 3px; font-size: 12px;">CREATEDET ENGINE</div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Createdet</div>
+            <a href="profile.html" class="round-button" title="Профиль"></a>
+        </div>
+    </header>
+
+    <main class="main-content" id="mainContent">
+        <h1>Библиотека</h1>
+        <div class="subtitle">Доступные игры и инструменты</div>
+
+        <div class="grid">
+            <div class="item-card">
+                <div class="item-name">Cheat Engine</div>
+                <a href="CHI.torrent" class="btn-download">⬇ СКАЧАТЬ .TORRENT</a>
+            </div>
+
+            <div class="item-card">
+                <div class="item-name">Art Money</div>
+                <a href="AM.torrent" class="btn-download">⬇ СКАЧАТЬ .TORRENT</a>
+            </div>
+
+            <div class="item-card">
+                <div class="item-name">Survive 1.6</div>
+                <a href="survive install.exe" class="btn-download">⬇ СКАЧАТЬ .EXE</a>
+            </div>
+
+            <div class="item-card">
+                <div class="item-name">HNC Pre-Alpha</div>
+                <a href="HNC Pre-Alpha.exe" class="btn-download">⬇ СКАЧАТЬ .EXE</a>
+            </div>
+
+            <div class="item-card">
+                <div class="item-name">Granny Clicker</div>
+                <a href="#" class="btn-download btn-soon">В РАЗРАБОТКЕ</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Createdet Platform. Инструменты для геймеров.
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('mainContent');
+
+            // Задержка 1.2 сек для красоты
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                mainContent.classList.add('loaded');
+            }, 1200);
+        });
+    </script>
+
 </body>
 </html>

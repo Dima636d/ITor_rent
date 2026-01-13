@@ -1,22 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Steam Login Interface</title>
     <script src="js/register.js" defer></script>
+    <style>
+        /* ПРЕЛОАДЕР (ЭКРАН ЗАГРУЗКИ) */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1b2838;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        /* Анимация крутящегося кольца в стиле Steam */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(102, 192, 244, 0.2);
+            border-top: 5px solid #66c0f4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Текст загрузки */
+        .loader-text {
+            color: #66c0f4;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ОСНОВНОЙ КОНТЕНТ */
+        body {
+            background-color: #1b2838;
+            color: #c7d5e0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden; /* Пока идет загрузка, не скроллим */
+        }
+
+        /* Плавное появление формы */
+        .auth-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+            background: rgba(24, 26, 33, 0.95);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 400px;
+            border-top: 2px solid #66c0f4;
+            z-index: 1;
+        }
+
+        /* Класс, который мы добавим через JS после загрузки */
+        .auth-container.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Стили элементов управления */
+        h1 { font-size: 22px; color: #fff; text-align: center; margin-bottom: 20px; text-transform: uppercase; }
+        
+        input[type="text"] {
+            width: 100%; padding: 12px; margin: 8px 0;
+            background-color: #32353c; border: 1px solid #111;
+            border-radius: 3px; color: #fff; box-sizing: border-box;
+        }
+
+        button {
+            width: 100%; padding: 12px; margin-top: 10px;
+            background: linear-gradient(to right, #47bfff 0%, #1a44c2 100%);
+            border: none; border-radius: 2px; color: #fff;
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+
+        button:hover { filter: brightness(1.2); box-shadow: 0 0 10px rgba(102, 192, 244, 0.5); }
+
+        .divider { height: 1px; background: #32353c; margin: 30px 0; }
+        h6 { text-align: center; color: #8f98a0; font-size: 11px; margin-top: 15px; }
+
+    </style>
 </head>
 <body>
-    <h1>Зарегистрируйтесь</h1>
-    <input type="text" id="regInput" placeholder="password">
-    <input type="text" id="nameInput" placeholder="Name">
-    <button onclick="SavePass()">save password</button>
-    <button onclick="SaveName()">save name</button>
 
-    <h1>Ввойдите</h1>
-    <input type="text" id="logInput" placeholder="password">
-    <button onclick="logpas()">login password</button>
+    <!-- ЭКРАН ЗАГРУЗКИ -->
+    <div id="preloader">
+        <div class="loader"></div>
+        <div class="loader-text">Подключение...</div>
+    </div>
 
-    <h6>если вы уже зарегистрированы то просто ввойдите</h6>
+    <!-- ОСНОВНАЯ ФОРМА -->
+    <div class="auth-container" id="mainCard">
+        <div class="section">
+            <h1>Создать аккаунт</h1>
+            <input type="text" id="nameInput" placeholder="Имя">
+            <input type="text" id="regInput" placeholder="Пароль">
+            <button onclick="SaveName(); SavePass();">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h1>Вход</h1>
+            <input type="text" id="logInput" placeholder="Введите пароль">
+            <button onclick="logpas()">ВОЙТИ</button>
+            <h6>Данные хранятся локально в вашем браузере</h6>
+        </div>
+    </div>
+
+    <script>
+        // ЛОГИКА ПЛАВНОЙ ЗАГРУЗКИ
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            const mainCard = document.getElementById('mainCard');
+
+            // Имитируем небольшую задержку для красоты (например, 1.5 секунды)
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                
+                // Разрешаем скролл и показываем форму
+                document.body.style.overflow = 'visible';
+                mainCard.classList.add('loaded');
+            }, 1500);
+        });
+    </script>
+
 </body>
 </html>

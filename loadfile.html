@@ -1,46 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>load file</title>
-    <script src=""></script>
     <style>
-        .upload-form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-          }
-      
-          .upload-form input[type="file"] {
-            margin: 10px 0;
-          }
-      
-          .upload-form button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
+        /* Основной фон в стиле Steam */
+        body {
+            background-color: #1b2838;
+            color: #c7d5e0;
+            font-family: "Motiva Sans", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Контейнер формы */
+        .steam-form {
+            background: linear-gradient(180deg, #2a475e 0%, #1b2838 100%);
+            padding: 30px;
             border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease;
+        }
+
+        .steam-form:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #66c0f4;
+            font-size: 14px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #afe1ff;
+        }
+
+        /* Поля ввода */
+        input[type="text"], 
+        textarea, 
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 3px;
+            background-color: #32353c;
+            color: white;
+            box-sizing: border-box;
+            transition: background-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            background-color: #41444b;
+            outline: 1px solid #66c0f4;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* Стилизация кнопки файла */
+        input[type="file"] {
+            padding: 8px;
+            font-size: 12px;
+            background: rgba(0,0,0,0.2);
             cursor: pointer;
+        }
+
+        /* Кнопка отправить */
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #47bfff 0%, #1a44c2 100%);
+            border: none;
+            border-radius: 2px;
+            color: white;
             font-size: 16px;
-          }
-      
-          .upload-form button:hover {
-            background-color: #45a049;
-          }
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 15px rgba(71, 191, 255, 0.4);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
-    <div class="upload-form">
-        <h1>Загрузить файл</h1>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <input type="file" name="file" required>
-          <br>
-          <button type="submit">Загрузить</button>
-        </form>
-      </div>
+
+<form class="steam-form" action="https://formspree.io/f/mreegrok" method="POST" enctype="multipart/form-data">
+    <h1>Поддержка</h1>
+    <h2>Отправьте баг-репорт или предложите свою игру</h2>
+
+    <label>Ваш никнейм:</label>
+    <input type="text" name="name" placeholder="Напр: Player_1" required>
+
+    <label>Описание:</label>
+    <textarea name="message" placeholder="Опишите ошибку или вашу игру..." required></textarea>
+
+    <label>Скриншот или файл (необязательно):</label>
+    <!-- Убрал атрибут required, теперь файл можно не прикреплять -->
+    <input type="file" name="upload">
+
+    <button type="submit">ОТПРАВИТЬ ДАННЫЕ</button>
+</form>
+
 </body>
 </html>
