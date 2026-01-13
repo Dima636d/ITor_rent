@@ -109,11 +109,57 @@
             font-size: 13px;
         }
         .btn-download:hover { filter: brightness(1.2); box-shadow: 0 0 15px rgba(164, 208, 7, 0.3); }
-        
-        .btn-soon { background: #3d4450; cursor: not-allowed; color: #888; }
-        .btn-soon:hover { filter: none; box-shadow: none; }
 
-        footer { margin-top: auto; padding: 40px; color: #4f535b; font-size: 13px; }
+        /* ФУТЕР (СТИЛЬ STEAM) */
+        footer {
+            width: 100%;
+            background: #171a21;
+            padding: 40px 0;
+            margin-top: 100px;
+            color: #8f98a0;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1100px;
+            border-top: 1px solid #32353c;
+            padding-top: 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Motiva Sans', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            color: #66c0f4;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .footer-support-link {
+            color: #c7d5e0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-support-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: #32353c;
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
@@ -150,11 +196,24 @@
                 <div class="item-name">Granny Clicker</div>
                 <a href="Clicker.apk" class="btn-download">⬇ СКАЧАТЬ .APK</a>
             </div>
+            <!-- <div class="item-card">
+                <div class="item-name">test</div>
+                <a href="#" class="btn-download btn-soon">в разработке</a>
+            </div> -->
+                                                                                    <!-- вот так можно добавлять новые карточки -->
         </div>
     </main>
 
+    <!-- ФУТЕР -->
     <footer>
-        &copy; 2026 Createdet Platform. Инструменты для геймеров.
+        <div class="footer-content">
+            <div class="footer-logo">Createdet</div>
+            <div class="footer-links">
+                &copy; 2026 Createdet Platform. Все права защищены.
+                <span class="separator">|</span>
+                <a href="loadfile.html" class="footer-support-link">Поддержка</a>
+            </div>
+        </div>
     </footer>
 
     <script>
