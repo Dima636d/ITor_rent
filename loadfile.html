@@ -5,19 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Createdet | Поддержка</title>
     <style>
-        /* Основний фон у стилі Steam */
+        /* Основной фон в стиле Steam */
         body {
             background-color: #1b2838;
             color: #c7d5e0;
             font-family: "Motiva Sans", Arial, sans-serif;
             display: flex;
+            flex-direction: column; /* Добавлено, чтобы кнопка была над формой */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
         }
 
-        /* Контейнер форми */
+        /* Стиль кнопки НАЗАД */
+        .back-btn {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #66c0f4;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding: 8px 12px;
+            background: rgba(102, 192, 244, 0.1);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(102, 192, 244, 0.2);
+            color: #ffffff;
+            transform: translateX(-5px);
+        }
+
+        .back-btn svg {
+            margin-right: 8px;
+            fill: currentColor;
+        }
+
+        /* Контейнер формы */
         .steam-form {
             background: linear-gradient(180deg, #2a475e 0%, #1b2838 100%);
             padding: 30px;
@@ -54,8 +83,9 @@
             color: #afe1ff;
         }
 
-        /* Поля введення */
+        /* Поля ввода */
         input[type="text"], 
+        input[type="email"],
         textarea {
             width: 100%;
             padding: 12px;
@@ -72,17 +102,13 @@
             background-color: #41444b;
             outline: 1px solid #66c0f4;
         }
-        input[type="email"]:focus {
-            background-color: #41444b;
-            outline: 1px solid #66c0f4;
-    }
 
         textarea {
             height: 100px;
             resize: vertical;
         }
 
-        /* Блок інструкції */
+        /* Блок инструкции */
         .info-box {
             background: rgba(0, 0, 0, 0.3);
             padding: 15px;
@@ -101,7 +127,7 @@
             color: #66c0f4;
         }
 
-        /* Кнопка */
+        /* Кнопка ОТПРАВИТЬ */
         button {
             width: 100%;
             padding: 15px;
@@ -123,39 +149,42 @@
     </style>
 </head>
 <body>
-    
 
-<form class="steam-form" action="https://formspree.io/f/mreegrok" method="POST">
-    <h1>Поддержка</h1>
-    <h2>Предложите игру или сообщите об ошибке</h2>
+<div style="width: 100%; max-width: 510px; display: flex; flex-direction: column;">
+    <!-- Кнопка Назад -->
+    <a href="index2.html" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path></svg>
+        Назад
+    </a>
 
-    <label>Ваш никнейм:</label>
-    <input type="text" name="name" placeholder="Напр: Player_1" required>
+    <form class="steam-form" action="https://formspree.io/f/mreegrok" method="POST">
+        <h1>Поддержка</h1>
+        <h2>Предложите игру или сообщите об ошибке</h2>
 
-    <label>Ваша почта:</label>
-<!-- Атрибут name="email" ОБЯЗАТЕЛЕН, чтобы Formspree его узнал -->
-    <input type="email" name="email" placeholder="example@mail.com" required>
+        <label>Ваш никнейм:</label>
+        <input type="text" name="name" placeholder="Напр: Player_1" required>
 
+        <label>Ваша почта:</label>
+        <input type="email" name="email" placeholder="example@mail.com" required>
 
-    <label>Суть обращения:</label>
-    <textarea name="message" placeholder="Опишите баг или расскажите о вашей игре..." required></textarea>
+        <label>Суть обращения:</label>
+        <textarea name="message" placeholder="Опишите баг или расскажите о вашей игре..." required></textarea>
 
-    <!-- Інструкція замість завантаження файлів -->
-    <div class="info-box">
-        <p><b>ХОТИТЕ ДОБАВИТЬ ИГРУ?</b></p>
-        <p>Загрузите её на <b>Google Диск</b> или <b>Mega</b>, откройте доступ по ссылке и вставьте эту ссылку в поле ниже.</p>
-    
-    <!-- Добавленный текст про ответ -->
-    <p style="margin-top: 10px; color: #66c0f4; font-size: 12px;">
-        Вам ответят на <b>электронную почту</b> через некоторое время.
-    </p>
-    </div>
+        <div class="info-box">
+            <p><b>ХОТИТЕ ДОБАВИТЬ ИГРУ?</b></p>
+            <p>Загрузите её на <b>Google Диск</b> или <b>Mega</b>, откройте доступ по ссылке и вставьте эту ссылку в поле ниже.</p>
+        
+            <p style="margin-top: 10px; color: #66c0f4; font-size: 12px;">
+                Вам ответят на <b>электронную почту</b> через некоторое время.
+            </p>
+        </div>
 
-    <label>Ссылка на Google Диск / Скриншот:</label>
-    <input type="text" name="link" placeholder="drive.google.com..." >
+        <label>Ссылка на Google Диск / Скриншот:</label>
+        <input type="text" name="link" placeholder="drive.google.com..." >
 
-    <button type="submit">Отправить в Createdet</button>
-</form>
+        <button type="submit">Отправить в Createdet</button>
+    </form>
+</div>
 
 </body>
 </html>
