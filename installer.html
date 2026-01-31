@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Createdet | Установщик</title>
+    <style>
+        /* --- ПРЕЛОАДЕР --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #171a21;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .loader {
+            width: 60px; height: 60px;
+            border: 6px solid rgba(102, 192, 244, 0.1);
+            border-top: 6px solid #66c0f4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- ОСНОВНЫЕ СТИЛИ --- */
+        body {
+            background-color: #1b2838;
+            color: #c7d5e0;
+            font-family: 'Motiva Sans', Arial, sans-serif;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column;
+            align-items: center; min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            background: #171d25;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex; justify-content: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-container { width: 90%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: 2px; background: linear-gradient(to right, #66c0f4, #1a44c2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+
+        .main-content { width: 90%; max-width: 600px; padding: 50px 0; text-align: center; opacity: 0; transform: translateY(20px); transition: 1s all ease; }
+        .main-content.loaded { opacity: 1; transform: translateY(0); }
+
+        h1 { font-size: 36px; color: #fff; margin-bottom: 15px; }
+        .subtitle { color: #66c0f4; margin-bottom: 40px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .btn-download {
+            display: inline-block; padding: 15px 30px;
+            background: linear-gradient(to bottom, #a4d007 0%, #536904 100%);
+            color: #fff; text-decoration: none;
+            font-weight: bold; border-radius: 4px;
+            text-transform: uppercase; font-size: 16px;
+            transition: 0.2s;
+        }
+        .btn-download:hover { filter: brightness(1.2); box-shadow: 0 0 15px rgba(164, 208, 7, 0.3); }
+
+        footer {
+            width: 100%; background: #171a21; padding: 40px 0; margin-top: 100px;
+            color: #8f98a0; font-size: 13px; display: flex; justify-content: center;
+        }
+        .footer-content { width: 90%; max-width: 1100px; border-top: 1px solid #32353c; padding-top: 20px; }
+        .footer-logo { font-family: 'Motiva Sans', sans-serif; font-weight: bold; font-size: 16px; color: #66c0f4; margin-bottom: 10px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+        <div style="color: #66c0f4; margin-top: 15px; letter-spacing: 3px; font-size: 12px;">CREATEDET ENGINE</div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Createdet</div>
+        </div>
+    </header>
+
+    <main class="main-content" id="mainContent">
+        <h1>Установщик лаунчера</h1>
+        <div class="subtitle">Нажмите кнопку, чтобы скачать лаунчер</div>
+        <a href="https://github.com/username/repo/releases/download/v1.0/Createdetc.exe" class="btn-download" download>⬇ Скачать лаунчер .EXE</a>
+        <p style="margin-top: 20px; font-size: 13px; color: #c7d5e0;">После скачивания откройте файл и следуйте инструкциям установки</p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Createdet</div>
+            &copy; 2026 Createdet Platform. Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('mainContent');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                mainContent.classList.add('loaded');
+            }, 1200);
+        });
+    </script>
+
+</body>
+</html>
